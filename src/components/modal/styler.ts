@@ -1,3 +1,4 @@
+import { Inter_200ExtraLight } from "@expo-google-fonts/inter";
 import { StyleSheet } from "react-native";
 import { stylerColorsMain, stylerMainFonts } from "../../Utils/routes";
 
@@ -31,7 +32,11 @@ const styler = StyleSheet.create({
         alignItems: "center",
         width: '80%',
         margin: 14,
-    }
+    },
+    calendarText:{
+        color: 'white',
+        fontFamily: stylerMainFonts.boldInter,
+    },
 })
 
 export default styler 
