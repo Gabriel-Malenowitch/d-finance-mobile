@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { View, ScrollView, Button } from "react-native";
+import { 
+    View, 
+    ScrollView, 
+    Button,
+    Image, } from "react-native";
 
 
 import styler from "./styler";
-import { stylerColorsMain } from "../../Utils/routes";
+import { stylerGlobal } from "../../global/stylerGlobal";
+import { stylerColorsMain, ProvisoryUser } from "../../Utils/routes";
 import { assets } from "../../Utils/routes";
 
 import {MainValues} from '../../components/mainValues'
@@ -22,29 +27,30 @@ export function Home(){
     const [valuesMain, setValuesMain] = useState([0,0])
     const [openedModal, setOpenedModal] = useState(false)
     const [extractValues, setExtractValues]: any[] = useState(extractHomePage)
-    
-
 
 
     function setValuesNewTransaction(value: number, description: string, date: string){
         let extractBase: extractPageInterface = {
             id: extract.length+1,
             value: value,
+            beautifullValue: value,
             description: description,
             dateOfThisExtract: date,
         }
         if(Utils.confirmValues(extractBase)){
-            extractBase = Utils.configValues(extractBase)
 
+            //Set valores
+            const [plus, minus] = Utils.getTotaly([...extract, extractBase])
+            setValuesMain([plus, minus])
+
+            //Configurar valores
+            extractBase = Utils.configValues(extractBase)
             extract.push(extractBase)
 
-            extractHomePage = extract.map(e=>[e.dateOfThisExtract.toString(), e.value])
-
+            //Set extrato
+            extractHomePage = extract.map(e=>[e.dateOfThisExtract.toString(), `R$${e.beautifullValue}`])
             setExtractValues(extractHomePage)
 
-            const [plus, minus] = Utils.getTotaly(extract)
-            
-            setValuesMain([plus, minus])
         }
         
     }
@@ -60,6 +66,8 @@ export function Home(){
                     style={styler.logo}
                     height={40}
                     width={300}/>
+                
+                <Image style={stylerGlobal.avatarUser} source={{uri: ProvisoryUser.avatar}}></Image>
 
             </View>
 

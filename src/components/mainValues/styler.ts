@@ -5,7 +5,7 @@ const styler = StyleSheet.create({
     outputContainer:{
         alignItems: "center",
         padding: 10,
-        marginTop: -120,
+        marginTop: -80,
     },
     outputContainer1:{
         width: 320,
@@ -28,7 +28,7 @@ const styler = StyleSheet.create({
     },
     outputContainerMoney: {
       margin: 20,
-      fontSize: 30,
+      fontSize: 25,
       fontFamily: stylerMainFonts.mediumInter,
     },
     outputContainerLogo: {

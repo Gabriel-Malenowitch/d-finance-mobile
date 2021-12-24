@@ -3,15 +3,21 @@ import { View, Text } from "react-native";
 import styler from './styler'
 import {assets, stylerColorsMain} from '../../Utils/routes'
 
+import {Utils} from '../../Tools/Utils'
+
 type Props = {
     valuesMainTag: number[]
 }
 
 export function MainValues({valuesMainTag}: Props){
 
+    //valuesMainTag = Utils.formateNumbers(valuesMainTag)
+    const newValuesMainTag = Utils.formateNumbers(valuesMainTag)
+
     function totalColor(valuesMain: number[]): string{
         return valuesMain[0]-valuesMain[1] >= 0 ? stylerColorsMain.greenMoney : stylerColorsMain.redMoney
     }
+
 
     return(
         <View style={styler.outputContainer}>
@@ -19,7 +25,7 @@ export function MainValues({valuesMainTag}: Props){
                     <View style={styler.outputContainer1}>
                         <View style={styler.outputContainer2}>
                             <Text style={styler.outputContainerTitle}>Entradas:</Text>
-                            <Text style={styler.outputContainerMoney}>+ R$ {valuesMainTag[0].toFixed(2).replace('.',',')}</Text>
+                            <Text style={styler.outputContainerMoney}>+ R$ {newValuesMainTag[0]}</Text>
                         </View>
 
                         <assets.Plus style={styler.outputContainerLogo} height={40} width={40}/>
@@ -27,7 +33,7 @@ export function MainValues({valuesMainTag}: Props){
                     <View style={styler.outputContainer1}>
                         <View style={styler.outputContainer2}>
                             <Text style={styler.outputContainerTitle}>Saídas:</Text>
-                            <Text style={styler.outputContainerMoney}>- R$ {valuesMainTag[1].toFixed(2).replace('.',',')}</Text>
+                            <Text style={styler.outputContainerMoney}>- R$ {newValuesMainTag[1]}</Text>
                         </View>
 
                         <assets.Minus style={styler.outputContainerLogo} height={40} width={40}/>
@@ -37,7 +43,7 @@ export function MainValues({valuesMainTag}: Props){
                             <Text style={{...styler.outputContainerTitle, color: 'white'}}>Total:</Text>
                             <Text style={{...styler.outputContainerMoney, color: 'white'}}>
                                 {(valuesMainTag[0]-valuesMainTag[1]) >= 0 ? '+ ' : '- '}
-                                R$ {Number(valuesMainTag[0]-valuesMainTag[1]).toFixed(2).replace('.',',')}
+                                R$ {newValuesMainTag[2]}
                             </Text>
                         </View>
 

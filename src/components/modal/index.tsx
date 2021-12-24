@@ -11,10 +11,6 @@ import CalendarPicker from 'react-native-calendar-picker'
 import styler from './styler'
 
 
-
-
-
-
 type Props = {
     isVisible: boolean,
     defIsVisible: Function
@@ -47,6 +43,7 @@ export function MyModal({isVisible, defIsVisible, setValues}: Props){
 
                 <View style={styler.inputContainer}>
                     <Text style={styler.text}>Para valores negativos utilize "-" antes do valor.</Text> 
+                    <Text style={styler.text}>Para valores decimais use "." ao invés de ",".</Text> 
                     <TextInput onChangeText={e=>moneyValue = e} keyboardType="numeric" placeholder="Valor" style={styler.input}/>
                 </View>
 

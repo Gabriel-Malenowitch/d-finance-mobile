@@ -27,3 +27,10 @@ export const stylerMainFonts = {
     boldInter: 'Inter_700Bold', 
     bolderInter: 'Inter_900Black',
 }
+
+export const ProvisoryUser = {
+    avatar: "https://github.com/Gabriel-Malenowitch.png",
+    name: "Gabriel Botelho Malenowitch",
+    description: "Aquele homem só pode ser derrotado por alguém que empunha uma lança de pura determinação. O que é mais poderoso? uma armadura que te mantém vivo, ou uma fé que supera o medo da morte?",
+    
+}
