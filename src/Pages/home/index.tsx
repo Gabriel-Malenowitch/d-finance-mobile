@@ -10,27 +10,63 @@ import {MainValues} from '../../components/mainValues'
 import {MyModal} from '../../components/modal'
 import {ExtractHomePage} from '../../components/extractHomePage'
 
+import { extractPageInterface } from '../../Utils/interfaces'
+import { Utils } from "../../Tools/Utils";
+
+
+
+let extract: extractPageInterface[] = []
+let extractHomePage: any[][] = extract.map(e=>[e.dateOfThisExtract.toString(), e.value])
 
 export function Home(){
-    const [valuesMain, setValuesMain] = useState([9,5])
+    const [valuesMain, setValuesMain] = useState([0,0])
     const [openedModal, setOpenedModal] = useState(false)
-    const [extractHomePage, setExtractHomePage] = useState([["AAA", "45.34"]])
+    const [extractValues, setExtractValues]: any[] = useState(extractHomePage)
     
-    extractHomePage.push(["AAA", "45.34"])
-    extractHomePage.push(["AAA", "45.34"])
-    extractHomePage.push(["AAA", "45.34"])
-    extractHomePage.push(["AAA", "45.34"])
+
+
+
+    function setValuesNewTransaction(value: number, description: string, date: string){
+        let extractBase: extractPageInterface = {
+            id: extract.length+1,
+            value: value,
+            description: description,
+            dateOfThisExtract: date,
+        }
+        if(Utils.confirmValues(extractBase)){
+            extractBase = Utils.configValues(extractBase)
+
+            extract.push(extractBase)
+
+            extractHomePage = extract.map(e=>[e.dateOfThisExtract.toString(), e.value])
+
+            setExtractValues(extractHomePage)
+
+            const [plus, minus] = Utils.getTotaly(extract)
+            
+            setValuesMain([plus, minus])
+        }
+        
+    }
+
+    
 
     return(
         <ScrollView style={styler.container}>
             
             <View style={styler.header}>
-                <assets.Logo style={styler.logo} height={40} width={300}/>
+
+                <assets.Logo 
+                    style={styler.logo}
+                    height={40}
+                    width={300}/>
+
             </View>
 
             <View style={styler.main}>               
 
-                <MainValues valuesMainTag={valuesMain}/>
+                <MainValues 
+                    valuesMainTag={valuesMain}/>
                 
                 <Button
                     onPress={()=>setOpenedModal(!openedModal)}
@@ -39,11 +75,16 @@ export function Home(){
                     accessibilityLabel="Efetuar nova anotação"
                     />
                 
-                <ExtractHomePage data={extractHomePage}/>
+                <ExtractHomePage 
+                    data={extractValues}/>
 
             </View>
 
-            <MyModal isVisible={openedModal} defIsVisible={setOpenedModal}/>
+            <MyModal 
+                isVisible={openedModal} 
+                defIsVisible={setOpenedModal}
+                setValues={setValuesNewTransaction}
+            />
             
         </ScrollView>
     )

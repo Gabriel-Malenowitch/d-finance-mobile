@@ -1,13 +1,7 @@
 export interface extractPageInterface {
     id: number,
-    description: string,
     value: number,
-    dateOfThisExtract: number,
+    description: string,
+    dateOfThisExtract: string,
 }
 
-// const valueTest: extractPageInterface = {
-//     id: Math.random(),
-//     description: "Comprei uns burrito alí na esquina",
-//     value: 40,
-//     dateOfThisExtract: new Date().getDay(),
-// }

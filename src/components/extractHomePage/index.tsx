@@ -4,7 +4,7 @@ import {Table, Row, Rows} from 'react-native-table-component'
 import styler from './styler'
 
 type Props = {
-    data: any[],
+    data: string[],
 }
 
 const headerRow: string[] = ["Data da transação", "Valor transacionado"]
