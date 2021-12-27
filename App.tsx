@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 
 import AppLoading from 'expo-app-loading';
 
-import {Home} from './src/Pages/home'
+import {RoutesPage} from './src/Pages/routesPage'
 
 import { stylerColorsMain as mr } from './src/Utils/routes';
 
@@ -30,10 +30,14 @@ export default function App() {
 
   //<Text style={{fontFamily: 'Inter_900Black'}}>Hello, world!</Text>
   return (
-    <View style={{backgroundColor: mr.bgColorHomePage}}>
-      <Home/>
-      <StatusBar style='light' />
-    </View>
+    <>
+      <RoutesPage/>
+      <StatusBar style='auto' />
+    </>
+    // <View style={{backgroundColor: mr.bgColorHomePage}}>
+    //   <RoutesPage/>
+    //   <StatusBar style='light' />
+    // </View>
   );
 }
 

@@ -6,8 +6,8 @@ export const stylerGlobal = StyleSheet.create({
         width: 60,
         height: 60,
         borderRadius: 200,
-        borderColor: stylerColorsMain.buttonColor,
-        borderWidth: 5,
+        borderColor: stylerColorsMain.fontColor,
+        borderWidth: 0,
         margin: 10,
     }
 })

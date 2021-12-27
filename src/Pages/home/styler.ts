@@ -1,18 +1,19 @@
 import { StyleSheet } from "react-native";
-import { stylerColorsMain } from "../../Utils/routes";
+import { stylerColorsMain as mr } from "../../Utils/routes";
 
 const styler = StyleSheet.create({
     container:{
-        minHeight: '100%'
+        minHeight: '100%',
+        backgroundColor: mr.bgColorHomePage,
     },
     main:{
-        backgroundColor: stylerColorsMain.bgColorHomePage,
+        backgroundColor: mr.bgColorHomePage,
         alignItems: "center",
 
         height: '100%',
     },
     header:{
-        backgroundColor: stylerColorsMain.backgroundGreenHomePage,
+        backgroundColor: mr.backgroundGreenHomePage,
         height: 250,
 
         alignItems: "center",

@@ -6,21 +6,30 @@ const styler = StyleSheet.create({
     container: {
         width: '100%',
         height: '100%',
-        backgroundColor: stylerColorsMain.backgroundGreenHomePage,
+        backgroundColor: stylerColorsMain.bgColorHomePage,
+
+        borderTopRightRadius: 20,
+        borderTopLeftRadius: 20,
         
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+
+        paddingBottom: 30,
+        paddingTop: 10,
     },
     text: {
-        color: 'white',
+        color: stylerColorsMain.fontColor,
         fontFamily: stylerMainFonts.boldInter,
-        fontSize: 18,
+        fontSize: 14,
         textAlign: 'center',
     },
     input: {
         backgroundColor: stylerColorsMain.bgColorHomePage,
-        color: 'black',
+        color: stylerColorsMain.fontColor,
         borderRadius: 5,
+        borderColor: stylerColorsMain.fontColor, 
+        borderWidth: 1,
+        //borderWidth: StyleSheet.hairlineWidth,
 
         width: '80%',
         height: 40,
@@ -31,10 +40,10 @@ const styler = StyleSheet.create({
     inputContainer: {
         alignItems: "center",
         width: '80%',
-        margin: 14,
+        margin: 8,
     },
     calendarText:{
-        color: 'white',
+        color: stylerColorsMain.fontColor,
         fontFamily: stylerMainFonts.boldInter,
     },
 })

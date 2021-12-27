@@ -1,5 +1,8 @@
 import { StyleSheet } from "react-native";
-import { stylerMainFonts } from "../../Utils/routes";
+import { 
+    stylerMainFonts,
+    stylerColorsMain as mr
+ } from "../../Utils/routes";
 
 const styler = StyleSheet.create({
     outputContainer:{
@@ -7,7 +10,7 @@ const styler = StyleSheet.create({
         padding: 10,
         marginTop: -80,
     },
-    outputContainer1:{
+    outputContainer1: {
         width: 320,
         height: 170,
         padding: 20,
@@ -23,8 +26,8 @@ const styler = StyleSheet.create({
     },
     outputContainerTitle: {
         margin: 10,
-        fontSize: 18
-        
+        fontSize: 18,
+        color: mr.fontColor
     },
     outputContainerMoney: {
       margin: 20,

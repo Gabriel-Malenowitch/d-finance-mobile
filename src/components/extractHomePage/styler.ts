@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
 
+import { stylerColorsMain as mr } from "../../Utils/routes";
+
 const styler = StyleSheet.create({
     containerMain: {
         minHeight: '100%',
@@ -11,15 +13,23 @@ const styler = StyleSheet.create({
 
         flex: 1,
 
-        borderColor: 'black',
+        borderColor: mr.fontColor,
         
     },
     tableHeaderStyle: {
-        height: 40,
+        height: 80,
     },
     tableTextStyle:{
         margin: 6,
         textAlign: "center"
+    },
+    wrapper:{
+        justifyContent: "center",
+        flexDirection: "row",
+    },
+    cell: {
+        alignItems: 'center',
+        width: 100,
     }
 })
 

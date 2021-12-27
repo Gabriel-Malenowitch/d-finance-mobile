@@ -44,7 +44,7 @@ export function MyModal({isVisible, defIsVisible, setValues}: Props){
                 <View style={styler.inputContainer}>
                     <Text style={styler.text}>Para valores negativos utilize "-" antes do valor.</Text> 
                     <Text style={styler.text}>Para valores decimais use "." ao invés de ",".</Text> 
-                    <TextInput onChangeText={e=>moneyValue = e} keyboardType="numeric" placeholder="Valor" style={styler.input}/>
+                    <TextInput autoFocus onChangeText={e=>moneyValue = e} keyboardType="numeric" placeholder="Valor" style={styler.input}/>
                 </View>
 
                 <View style={styler.inputContainer}>
