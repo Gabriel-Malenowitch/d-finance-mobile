@@ -108,6 +108,17 @@ export const Utils = {
         lessThanZero && (finalString = `-${finalString}`)
         
         return `${finalString}${centsIten}`
+    },
+    
+    getSizeList(data: string[][]): number[]{
+        function createList(n: number){
+            const list: number[] = []
+            for(let i = 0; i<n; i++){
+                list.push(i)
+            }
+            return list
+        }
+        return data.length <= 5 ? createList(data.length) : createList(5)
     }
 
 

@@ -19,6 +19,7 @@ import { extractPageInterface } from '../../Utils/interfaces'
 import { Utils } from "../../Tools/Utils";
 
 
+
 let extract: extractPageInterface[] = []
 let extractHomePage: any[][] = extract.map(e=>[e.dateOfThisExtract.toString(), e.value])
 
@@ -26,11 +27,6 @@ export function Home({navigation}: any){
     const [valuesMain, setValuesMain] = useState([0,0])
     const [openedModal, setOpenedModal] = useState(false)
     const [extractValues, setExtractValues]: any[] = useState(extractHomePage)
-    
-    //Só para testes==========
-    // for (let index = 0; index < 1; index++) {
-    // }
-    //========================
 
     
     function setValuesNewTransaction(value: number, description: string, date: string){
@@ -96,10 +92,10 @@ export function Home({navigation}: any){
                 
                 <Button
                     onPress={()=>{
-                        // for (let index = 0; index < 10; index++) {
-                        //     setValuesNewTransaction(50, "Tem nada não", String(new Date))
-                        // }
-                        setOpenedModal(!openedModal)
+                        //setOpenedModal(!openedModal)
+                        for (let index = 0; index < 15; index++) {
+                            setValuesNewTransaction(index+50, "Tem nada não", String(new Date))
+                        }
                     }}
                     title="Efetuar Nova Anotação"
                     color={stylerColorsMain.buttonColor}
@@ -115,8 +111,7 @@ export function Home({navigation}: any){
             <MyModal 
                 isVisible={openedModal} 
                 defIsVisible={setOpenedModal}
-                setValues={setValuesNewTransaction}
-            />
+                setValues={setValuesNewTransaction}/>
             
         </ScrollView>
     )

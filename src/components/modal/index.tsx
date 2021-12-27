@@ -8,6 +8,8 @@ import {
 
 import CalendarPicker from 'react-native-calendar-picker'
 
+import { CloseHeader } from "../closeHeader";
+
 import styler from './styler'
 
 
@@ -40,6 +42,8 @@ export function MyModal({isVisible, defIsVisible, setValues}: Props){
         >
 
             <View style={styler.container}>
+
+                <CloseHeader setClose={defIsVisible}/>
 
                 <View style={styler.inputContainer}>
                     <Text style={styler.text}>Para valores negativos utilize "-" antes do valor.</Text> 

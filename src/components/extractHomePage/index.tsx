@@ -1,19 +1,37 @@
-import { View, Text, TouchableOpacity } from "react-native";
-import {Table, Row, TableWrapper, Cell} from 'react-native-table-component'
+import { useState } from "react";
+
+import { 
+    View,
+    TouchableOpacity,
+} from "react-native";
+
+
+import {
+    Table, 
+    Row, 
+    TableWrapper, 
+    Cell,
+} from 'react-native-table-component'
+
+import { ExtractListModal } from '../../components/extractListModal';
+import { ShowMoreItens } from "../showMoreItens";
 
 import { assets } from "../../Utils/routes";
 
 import styler from './styler'
+import { Utils } from "../../Tools/Utils";
 
 type Props = {
     data: string[][],
     removeFunction: Function,
 }
 
+const contList = [0,1,2,3,4]
 const headerRow: string[] = ["Data da transferência", "Valor\ntransferido", "Apagar"]
 
 export function ExtractHomePage({data, removeFunction}: Props){
     //<Rows data={data} textStyle={styler.tableTextStyle}/>
+    const [openedExtractListModal, setOpenedExtractListModal] = useState(false)
 
     function DeleteOption(id: number){   
         return(
@@ -26,7 +44,6 @@ export function ExtractHomePage({data, removeFunction}: Props){
     
     return(
         <View style={styler.container}>
-
             <Table>
 
                 <Row 
@@ -35,8 +52,10 @@ export function ExtractHomePage({data, removeFunction}: Props){
                     textStyle={styler.tableTextStyle}/>
 
 
-                {
-                    data.map((e, id)=>{
+                <View style={styler.reverseFlex}>
+                    {Utils.getSizeList(data).map((contListIten, id)=>{    
+                        const e = data[id]
+                        
                         return(
                             <TableWrapper key={id} style={styler.wrapper}>
                                 {
@@ -54,12 +73,23 @@ export function ExtractHomePage({data, removeFunction}: Props){
                                         )
                                     })
                                 }
-                            </TableWrapper>
+                            </TableWrapper>                        
                         )
-                    })
-                }
+                    })}
+                </View>
 
             </Table>
+
+            {data.length >=5 && 
+                <ShowMoreItens 
+                    setIsVisible={setOpenedExtractListModal}/>
+            }
+
+            <ExtractListModal
+                data={data}
+                removeFunction={removeFunction}
+                visible={openedExtractListModal}
+                setVisible={setOpenedExtractListModal}/>
 
         </View>
     )
