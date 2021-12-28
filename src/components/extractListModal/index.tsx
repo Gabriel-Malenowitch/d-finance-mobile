@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { 
     View, Text, Modal,
     TouchableOpacity, 
@@ -10,6 +11,8 @@ import {
 } from 'react-native-table-component'
 
 import { CloseHeader } from "../closeHeader";
+
+import { Utils } from "../../Tools/Utils";
 
 import { assets } from "../../Utils/routes";
 
@@ -26,17 +29,21 @@ const headerRow: string[] = ["Data da transferência", "Valor\ntransferido", "Ap
 
 export function ExtractListModal({data, removeFunction, visible, setVisible}: Props){
 
+    const [pageKey, setPageKey] = useState(0)
+
     function DeleteOption(id: number){   
         return(
-            <TouchableOpacity onPress={()=>removeFunction(id)}>
+            <TouchableOpacity onPress={()=>{
+                removeFunction(id)
+                console.log(id)
+                console.log(data.length)
+            }}>
                 <assets.Remove height={30} width={30}/>
             </TouchableOpacity>
         )
     
     }
 
-    
-    
     return(
         <Modal 
             transparent={true}
@@ -57,7 +64,17 @@ export function ExtractListModal({data, removeFunction, visible, setVisible}: Pr
 
 
                         <View style={styler.reverseFlex}>
-                            {data.map((e, id)=>{
+                            {Utils.createList(data.length-pageKey>15 ? 15 : data.length-pageKey).map((dataFromMap, reverseId)=>{
+                                const id = data.length-reverseId-1
+
+                                //console.log("==============")
+                                //console.log("size:   ", data.length)
+                                //console.log("pageKey:", pageKey)
+                                //console.log("id:     ", id)
+                                //console.log("data:   ", data.toString())
+                                //console.log("==============")
+                                
+                                const e = data[reverseId+pageKey]
                                 return(
                                     <TableWrapper key={id} style={styler.wrapper}>
                                         {
@@ -78,11 +95,22 @@ export function ExtractListModal({data, removeFunction, visible, setVisible}: Pr
                                     </TableWrapper>
                             )})}
                         </View>
-
-
-                    </Table>
-
+                    </Table>             
                 </View>
+
+                <View style={styler.footer}>
+                    <TouchableOpacity onPress={()=>pageKey !== 0 && setPageKey(pageKey-15)}>
+                        <Text style={styler.footerButton}>
+                            Anterior
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={()=>setPageKey(pageKey+15)}>
+                        <Text style={styler.footerButton}>
+                            Próximo
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+
             </ScrollView>
         </Modal>
     )

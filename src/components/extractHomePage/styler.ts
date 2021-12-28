@@ -32,7 +32,7 @@ const styler = StyleSheet.create({
         width: 100,
     },
     reverseFlex:{
-        flexDirection: 'column-reverse'
+        //flexDirection: 'column-reverse'
     }
 })
 

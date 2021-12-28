@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
-import { stylerColorsMain as mr } from "../../Utils/routes";
+import { 
+    stylerColorsMain as mr,
+    stylerMainFonts as fonts
+ } from "../../Utils/routes";
 
 const styler = StyleSheet.create({
     containerMain: {
@@ -41,7 +44,18 @@ const styler = StyleSheet.create({
         width: 100,
     },
     reverseFlex:{
-        flexDirection: 'column-reverse'
+        //flexDirection: 'column-reverse'
+    },
+    footerButton: {
+        fontSize: 20,
+        fontFamily: fonts.boldInter,
+        margin: 15,
+    },
+    footer:{
+        height: 60,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
     }
 })
 

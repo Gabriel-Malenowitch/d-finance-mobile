@@ -33,6 +33,8 @@ export function ExtractHomePage({data, removeFunction}: Props){
     //<Rows data={data} textStyle={styler.tableTextStyle}/>
     const [openedExtractListModal, setOpenedExtractListModal] = useState(false)
 
+    
+
     function DeleteOption(id: number){   
         return(
             <TouchableOpacity onPress={()=>removeFunction(id)}>
@@ -53,8 +55,9 @@ export function ExtractHomePage({data, removeFunction}: Props){
 
 
                 <View style={styler.reverseFlex}>
-                    {Utils.getSizeList(data).map((contListIten, id)=>{    
-                        const e = data[id]
+                    {Utils.getSizeList(data, 5).map((contListIten, reverseId)=>{    
+                        const e = data[reverseId]
+                        const id = data.length-reverseId-1
                         
                         return(
                             <TableWrapper key={id} style={styler.wrapper}>

@@ -27,7 +27,8 @@ export function Home({navigation}: any){
     const [valuesMain, setValuesMain] = useState([0,0])
     const [openedModal, setOpenedModal] = useState(false)
     const [extractValues, setExtractValues]: any[] = useState(extractHomePage)
-
+    let extractValuesReverse: any[][] = extractValues
+    extractValuesReverse.reverse()
     
     function setValuesNewTransaction(value: number, description: string, date: string){
         let extractBase: extractPageInterface = {
@@ -51,6 +52,9 @@ export function Home({navigation}: any){
             extractHomePage = extract.map(e=>[e.dateOfThisExtract.toString(), `R$${e.beautifullValue}`, "remove"])
             setExtractValues(extractHomePage)
             
+            // extractValuesReverse = extractValues
+            // extractValuesReverse.reverse()
+            
         }
         
     }
@@ -66,6 +70,9 @@ export function Home({navigation}: any){
         //Set extrato
         extractHomePage = extract.map(e=>[e.dateOfThisExtract.toString(), `R$${e.beautifullValue}`, "remove"])
         setExtractValues(extractHomePage)
+
+        //extractValuesReverse = extractValues
+        //extractValuesReverse.reverse()
         
     }
     
@@ -93,8 +100,8 @@ export function Home({navigation}: any){
                 <Button
                     onPress={()=>{
                         //setOpenedModal(!openedModal)
-                        for (let index = 0; index < 15; index++) {
-                            setValuesNewTransaction(index+50, "Tem nada não", String(new Date))
+                        for (let index = 0; index < 40; index++) {
+                            setValuesNewTransaction(index, "Tem nada não", String(new Date))
                         }
                     }}
                     title="Efetuar Nova Anotação"
@@ -104,7 +111,7 @@ export function Home({navigation}: any){
                 
                 <ExtractHomePage 
                     removeFunction={removeValuesNewTransaction}
-                    data={extractValues}/>
+                    data={extractValuesReverse}/>
 
             </View>
 
